@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = require('socket.io')(server);
 
-app.use(express.static('public'));
+app.use(express.static('public'));// کاربر با اتصال به سایت میتواند به فایلهای این پوشه دسترسی داشته باشه
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');// صفحه پیش فرض سایت
@@ -16,7 +16,21 @@ app.get('/', (req, res) => {
 let connectedPeers = [];
 let connectedPeersStrangers = [];
 
+io.on("conncection", (socket) => {
+    console.log("SERVER:user connected to socket IO ..." + socket.id);
+    connectedPeers.push(socket.id);
+    console.log(connectedPeers);
 
+
+    socket.on("disconnect", () => {
+        console.log('user disconnected');
+        const newConnected = connectedPeers.filter((socketpeer) => {
+            return socketpeer !== socket.id;
+        })
+        connectedPeers = newConnected;
+        console.log(connectedPeers);
+    })
+})
 
 
 

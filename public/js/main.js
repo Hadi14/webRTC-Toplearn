@@ -7,3 +7,9 @@ import * as recordingUtils from './recordingUtils.js';
 import * as strangerUtils from './strangerUtils.js';
 
 
+const socket = io('/');
+
+socket.on("connect", () => {
+    console.log("CLIENT: successfuly connected.");
+    console.log(socket.id);
+})
