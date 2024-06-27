@@ -6,14 +6,19 @@ import * as ui from './ui.js';
 import * as webRTCHandler from './webRTCHandler.js';
 import * as constants from './constants.js';
 import * as strangerUtils from './strangerUtils.js';
-
+let socketIO=null;
 export const registerSocketEvents = (socket) => {
     socket.on("connect", () => {
         console.log("CLIENT: successfuly connected.");
         console.log(socket.id);
+        socketIO=socket;
         // store.setSocketId(socket.id);
         // console.log(store.getState().socketId);
         ui.updatePersonalCode(socket.id);
     })
+}
+
+export const sendPreOffer = (data)=>{
+    socketIO.emit('pre-offer', data);
 }
 

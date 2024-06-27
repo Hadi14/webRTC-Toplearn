@@ -1,5 +1,5 @@
 // برای ارسال درخواستها و ...از این فایل استفاده میشود
-// import * as wss from './wss.js';
+import * as wss from './wss.js';
 // import * as ui from './ui.js';
 // import * as constants from './constants.js';
 // import * as store from './store.js';
@@ -13,10 +13,10 @@
 export const sendPreOffer = (callType, calleePersonalCode) => {
     console.log("EXEC");
     console.log(callType, calleePersonalCode);
-    // const data = {
-    //  callType,
-    //  calleePersonalCode
-    // }
+    const data = {
+        callType,
+        calleePersonalCode
+    }
 
     // connectedUserDetails = {
     //        callType,
@@ -35,6 +35,6 @@ export const sendPreOffer = (callType, calleePersonalCode) => {
     //    callType === constants.callType.VIDEO_STRANGER){
 
     //        store.setCallState(constants.callState.CALL_UNAVAILABLE);
-    //        wss.sendPreOffer(data);
+           wss.sendPreOffer(data);
     //    }
 }

@@ -25,8 +25,12 @@ io.on('connection', (socket) => {
     console.log("SERVER:user connected to socket IO : " + socket.id);
     connectedPeers.push(socket.id);
     console.log(connectedPeers);
-
+    socket.on('pre-offer', (data) => {
+        console.log("PreeOffer");
+        console.log(data);
+    })
     socket.on("disconnect", () => {
+
         console.log('user disconnected');
         const newConnected = connectedPeers.filter((socketpeer) => {
             return socketpeer !== socket.id;
