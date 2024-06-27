@@ -26,7 +26,6 @@ io.on('connection', (socket) => {
     connectedPeers.push(socket.id);
     console.log(connectedPeers);
 
-
     socket.on("disconnect", () => {
         console.log('user disconnected');
         const newConnected = connectedPeers.filter((socketpeer) => {
