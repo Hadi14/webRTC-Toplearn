@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const http = require('http');
 
@@ -16,9 +18,11 @@ app.get('/', (req, res) => {
 let connectedPeers = [];
 let connectedPeersStrangers = [];
 
+
+
+// console.log(store.allowConnectionsFromStranger);
 io.on('connection', (socket) => {
-    console.log("AAAAAAAAAAAAAAAAAA");
-    console.log("SERVER:user connected to socket IO ..." + socket.id);
+    console.log("SERVER:user connected to socket IO : " + socket.id);
     connectedPeers.push(socket.id);
     console.log(connectedPeers);
 

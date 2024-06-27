@@ -12,4 +12,6 @@ const socket = io('/');
 socket.on("connect", () => {
     console.log("CLIENT: successfuly connected.");
     console.log(socket.id);
+    store.setSocketId(socket.id);
+    console.log(store.getState().socketId);
 })
